@@ -1,1 +1,4 @@
-# 2951U
+Echo Server
+======================
+* `gcc -o echoserver.o echoserver.c`
+* `./echoserver`
