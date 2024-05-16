@@ -1,0 +1,6 @@
+- reboot in recovery
+- csrutil disable (terminal in recovery)
+- reboot in normal mode (system integrity left off)
+- sudo nvram boot-args=-arm64e_preview_abi
+
+
