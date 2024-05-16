@@ -1,9 +1,9 @@
-.text
 .align 2
+.text
 .global _main
 
-// Compute sum recursively of all number up to N
-// Where N is passed in as x0
+//compute sum recursively of all number up to N
+//where N is passed in as x0
 sum:
             cmp  x0,1
             b.le sum_exit

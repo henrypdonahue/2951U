@@ -1,9 +1,9 @@
-.text
 .align 2
+.text
 .global _main
 
-// Compute sum recursively of all number up to N
-// Where N is passed in as x0
+//compute sum recursively of all number up to N
+//where N is passed in as x0
 sum:
             cmp  x0,1
             b.le sum_exit
@@ -17,7 +17,7 @@ sum_exit:   ret
 
 _main:
     str lr,[sp,#-16]!
-    mov x0,7
+    mov x0,30000
     bl  sum
     ldr lr,[sp],#16
     ret
