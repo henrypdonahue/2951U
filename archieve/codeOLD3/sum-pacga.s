@@ -34,22 +34,8 @@ sum_epilogue:
 
 _main:
     stp lr,x28,[sp,#-16]!
-
-    stp x27,x26,[sp,#-16]!
-    mov x27,9000
-    main_repeat:mov x26,9000
-        main_repeat2:   
-                        mov x28,23
-                        mov x0,9
-                        bl  sum
-
-                        add  x26,x26,#-1
-                        cmp  x26,xzr
-                        b.ne main_repeat2
-                add  x27,x27,#-1
-                cmp  x27,xzr
-                b.ne main_repeat
-    ldp x27,x26,[sp],#16
-
+    mov x28,23
+    mov x0,11
+    bl  sum
     ldp lr,x28,[sp],#16
     ret
