@@ -1,5 +1,5 @@
 # Extending time until collision in PACStack
-This project explores ways to prevent collision in PACStack besides masking
+This project explores ways to prevent collision in PACStack besides masking.
 
 ### General Notes
 In the code folder, sum.s is basic ARM64 assembly program that sums the numbers from 0 to the input n:
@@ -16,10 +16,11 @@ The following files can in the code folder:
 - `sum-pac-mask.s` - the sum function + PACStack with masks
 - `sum-pac2.s` - the sum function + two hash function PACStack
 - `sum-pacga.s` - the sum function + extended hash length PACStack
+
+Old iterations and/or random code can be found in the archieve folder. The references folder contains pdf of some, but not all, of my sources. The following files in code are simplified version I wrote to start out with, but they can be ignored. Frankly I could delete them/move to archieve. They use a constant modifier not the amalgamation of the previos return addresses.
 - `sum-pac2-lite.s` - the sum function + two hash function PACStack with constant modifer
 - `sum-pacga-lite.s` - the sum function + extended hash length PACStack with constant modifier
 
-Old iterations and/or random code can be found in the archieve folder. The references folder contains pdf of some, but not all, of my sources.
 
 ### How to run
 To compile all files, inside of the code folder run `./automate-compile.sh`(may need to run `chmod 750 ./automate-compile.sh`). Then run `./automate-run.sh` to generate the `sum.times` file which lists the runtimes of the various methods (may need to run `chmod 750 ./automate-run.sh`).

@@ -28,9 +28,17 @@ _main:
                         cmp  x26,xzr
                         b.ne main_repeat2
                 add  x27,x27,#-1
-                cmp  x27,xzr
-                b.ne main_repeat
+                cmp  x27,xzr   
+                b.ne main_repeat 
     ldp x27,x26,[sp],#16
 
     ldr lr,[sp],#16
     ret
+
+@ MAIN without the loop
+@ _main:
+@     str lr,[sp,#-16]!
+@     mov x0,30000
+@     bl  sum
+@     ldr lr,[sp],#16
+@     ret
