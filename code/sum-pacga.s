@@ -1,5 +1,3 @@
-    
-
 .align 2
 .text
 .global _main

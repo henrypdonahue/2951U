@@ -9,7 +9,7 @@ sum_prologue:
             mov   x1,lr
             and   x1,x1,#0xFFFFFF000000
             and   lr,lr,#0x000000FFFFFF
-            pacia lr,x28
+            pacib lr,x28
             pacia x1,x28
             stp   lr,x1,[sp,#-16]!
             str   x28  ,[sp,#-16]!
@@ -28,7 +28,7 @@ sum_exit:
 sum_epilogue:
             ldr     x28   ,[sp],#16
             ldp     lr ,x1,[sp],#16  //encrypted pair
-            autia   lr ,x28
+            autib   lr ,x28
             autia   x1 ,x28
             orr     lr ,lr,x1     //restore return address
             ret

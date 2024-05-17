@@ -1,6 +1,5 @@
 # Extending time until collision in PACStack
+sum.s is basic ARM64 assembly program that sums the numbers from 0 to the input n. This will be equal to 
 
-## Author
-- Name: [Henry Donahue]
-- Contact: [henry_donahue@brown.edu]
-- Contact: [henrypdonahue@gmail.com]
+\sum_{i=1}^n i = \fract{n(n+1)}{2}
+'\sum_{i=1}^n i = \fract{n(n+1)}{2}'
