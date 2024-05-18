@@ -38,10 +38,10 @@ _main:
     ldr lr,[sp],#16 ; Load link register from stack
     ret ; Return from _main
 
-@ MAIN without the loop
-@ _main:
-@     str lr,[sp,#-16]! ; Store link register (lr) on the stack
-@     mov x0,9 ; Move 9 into x0 (argument for the sum function)
-@     bl  sum ; Call sum function, compute sum(9)
-@     ldr lr,[sp],#16 ; Load link register from stack
-@     ret ; Return from _main
+// MAIN without the loop
+// _main:
+//     str lr,[sp,#-16]! ; Store link register (lr) on the stack
+//     mov x0,9 ; Move 9 into x0 (argument for the sum function)
+//     bl  sum ; Call sum function, compute sum(9)
+//     ldr lr,[sp],#16 ; Load link register from stack
+//     ret ; Return from _main

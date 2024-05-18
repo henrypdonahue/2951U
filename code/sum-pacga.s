@@ -55,12 +55,3 @@ _main:
 
     ldp lr,x28,[sp],#16
     ret
-
-@ MAIN without loops
-@ _main:
-@     stp lr,x28,[sp,#-16]!
-@     mov x28,23
-@     mov x0,11
-@     bl  sum
-@     ldp lr,x28,[sp],#16
-@     ret
