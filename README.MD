@@ -1,4 +1,4 @@
-# Extending time until collision in PACStack
+# Handling collision in PACStack without masking
 This project explores ways to prevent collision in PACStack besides masking.
 
 ### General Notes

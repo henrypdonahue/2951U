@@ -24,12 +24,17 @@ sum_prologue:
 
 sum_exit:   
 sum_epilogue:
-            ldr   x1    ,[sp],#16
-            ldp   lr,x28,[sp],#16
-            pacga x2,lr,x28
-            cmp   x1,x2
-            b.eq  pac_pass          //x1 and x2 must match
+            ldr   x1    ,[sp],#16 ; Load the previously stored Pointer Authentication Code (PAC) from the stack into x1
+            ldp   lr,x28,[sp],#16 ;Load the values of lr (link register) and x28 from the stack into their respective registers
+            pacga x2,lr,x28 ; Recalculate the PAC using the current values of lr and x28, and store the result in x2
+            cmp   x1,x2 ; Compare the recalculated PAC (x2) with the previously stored PAC (x1)
+            b.eq  pac_pass ; If x1 and x2 match, branch to the label 'pac_pass' to continue with the function return
+            //x1 and x2 must match
+            
+            ; If x1 and x2 do not match, "decrypt" or authenticate the potentially corrupted return address in lr using x28
+            ; This step should always fail if there is an attack, as the PACs do not match
             autia lr,x28            //"decrypt" an unencrypted return addr => should always fail
+            ; Label for a successful PAC match and subsequent return
             pac_pass:
             ret
 
@@ -55,3 +60,12 @@ _main:
 
     ldp lr,x28,[sp],#16
     ret
+
+// MAIN without loops
+// _main:
+//     stp lr,x28,[sp,#-16]!
+//     mov x28,23
+//     mov x0,11
+//     bl  sum
+//     ldp lr,x28,[sp],#16
+//     ret
