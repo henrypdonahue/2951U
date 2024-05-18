@@ -5,10 +5,14 @@
 //where N is passed in as x0
 sum:
 sum_prologue:
-            pacga x1,lr,x28
+            pacga x1,lr,x28 ; Calculate a 32-bit Pointer Authentication Code (PAC) using lr and x28 as inputs, store the result in x1
             stp   lr,x28,[sp,#-16]!
+            ; Store the values of lr and x28 onto the stack and pre-decrement the stack pointer by 16 bytes
+            ; This effectively pushes lr and x28 onto the stack as part of the function prologue
             str   x1,    [sp,#-16]! //the code must match the return address
-            mov   x28,lr            //feedback into next modifier
+            ; Store the value of x1 onto the stack and pre-decrement the stack pointer by 16 bytes
+            ; x1 holds a PAC that needs to match with the return address (or another critical pointer) for validation during the epilogue
+            mov   x28,lr            ;feedback into next modifier
             
             cmp   x0,1
             b.le  sum_exit

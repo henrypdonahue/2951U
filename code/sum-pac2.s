@@ -26,11 +26,13 @@ sum_prologue:
             
 sum_exit:   
 sum_epilogue:
-            ldr     x28   ,[sp],#16
-            ldp     lr ,x1,[sp],#16  //encrypted pair
-            autib   lr ,x28
-            autia   x1 ,x28
-            orr     lr ,lr,x1     //restore return address
+            ldr     x28   ,[sp],#16 ; Load the value from the stack into x28 and post-increment the stack pointer by 16
+            ldp     lr ,x1,[sp],#16  ; Load the values into lr and x1 from the stack, then post-increment the stack pointer by 16, 
+            ; lr holds the return address, x1 holds another value, both potentially encrypted/authenticated
+            autib   lr ,x28  ; Authenticate lr using the pointer authentication code stored in x28
+            autia   x1 ,x28 ; Authenticate x1 using the pointer authentication code stored in x28
+            orr     lr ,lr,x1     ; Combine lr and x1 to reconstruct the original return address
+            ; This may involve clearing the PAC bits and merging other data bits from x1
             ret
 
 
